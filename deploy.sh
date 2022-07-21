@@ -19,7 +19,7 @@ then
 fi
 
 # create container called node_app on port 8443 from docker image
-docker create -p 8443:8443 --name node_app $IMAGE_NAME
+docker create -p 8444:8444 --name node_app $IMAGE_NAME
 
 # write private key to file
 echo $PRIVATE_KEY > privatekey.pem
@@ -28,10 +28,10 @@ echo $PRIVATE_KEY > privatekey.pem
 echo $SERVER > server.create
 
 # add private key to node_app docker container
-docker cp ./privatekey.pem node_app:/privatekey.pem
+docker cp /sunshine/privkey.pem node_app:/privatekey.pem
 
 # add server key to node_app docker container
-docker cp ./server.crt node_app:/server.crt
+docker cp /sunshine/cert.pem node_app:/server.crt
 
 # start the node_app container
 docker start node_app

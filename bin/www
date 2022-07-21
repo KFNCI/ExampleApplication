@@ -67,13 +67,13 @@ function onListening() {
 var fs = require('fs');
 var https = require('https');
 var port = normalizePort(process.env.PORT || '8081');
-var https_port    =   process.env.PORT_HTTPS || 84434; 
+var https_port    =   process.env.PORT_HTTPS || 8444; 
 var options = {}
 
 if(process.env.ENV !== "DEV") {
   var privatekey = fs.readFileSync('/sunshine/privkey.pem', "utf8")
   console.log(typeof privatekey)
-  var cert = fs.readFileSync('/sunshine/cert/pem', "utf8")
+  var cert = fs.readFileSync('/sunshine/cert.pem', "utf8")
   var header = "-----BEGIN PRIVATE KEY-----"
   var footer = "-----END PRIVATE KEY-----"
   console.log(privatekey.split(header))
